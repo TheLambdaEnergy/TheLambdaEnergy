@@ -57,3 +57,73 @@ for i in range(1,n+1):
   j += factorial(i)
 
 print(j)
+
+#2026.4.3
+#1
+for num in range(100, 1000):
+    a = num // 100         
+    b = (num // 10) % 10    
+    c = num % 10            
+if a**3 + b**3 + c**3 == num:
+    print(num, end=" ")
+
+#2
+n = int(input())
+j = [i for i in range(1,n) if i%3==0 and i%5==0]
+if len(j) == 0:
+    print("10以内没有3和5的最小公倍数")
+else:
+    print("{}以内存在3和5的最小公倍数，该数是{}".format(str(n),str(j[0])))
+
+#3
+n = int(input())
+denom = [1, 2]
+for i in range(2, n):
+    denom.append(denom[-1] + denom[-2])
+
+total = 0.0
+for i in range(n):
+    if i == 0:
+        numerator = 1
+    else:
+        numerator = i
+    if i % 2 == 0:
+        total += numerator / denom[i]
+    else:
+        total -= numerator / denom[i]
+
+print("{:.6f}".format(total))
+
+#4
+s = input().split(',')
+x = int(s[0])
+y = int(s[1])
+r = 0
+
+for i in range(1,max([int(j) for j in s])):
+  if x%i == 0 and y%i == 0:
+    r += i
+
+print(r)
+
+#5
+n = int(input())
+if n == 1 or n == 2:
+    total = 1
+else:
+    a, b = 1, 1
+    for _ in range(3, n + 1):
+        a, b = b, a + b
+    total = b
+print(f"该月兔子的总对数是: {total}")
+
+#6
+print('''1*1= 1 
+2*1= 2 2*2= 4 
+3*1= 3 3*2= 6 3*3= 9 
+4*1= 4 4*2= 8 4*3=12 4*4=16 
+5*1= 5 5*2=10 5*3=15 5*4=20 5*5=25 
+6*1= 6 6*2=12 6*3=18 6*4=24 6*5=30 6*6=36 
+7*1= 7 7*2=14 7*3=21 7*4=28 7*5=35 7*6=42 7*7=49 
+8*1= 8 8*2=16 8*3=24 8*4=32 8*5=40 8*6=48 8*7=56 8*8=64 
+9*1= 9 9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81''')
