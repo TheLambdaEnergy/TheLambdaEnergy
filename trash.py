@@ -127,3 +127,78 @@ print('''1*1= 1
 7*1= 7 7*2=14 7*3=21 7*4=28 7*5=35 7*6=42 7*7=49 
 8*1= 8 8*2=16 8*3=24 8*4=32 8*5=40 8*6=48 8*7=56 8*8=64 
 9*1= 9 9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81''')
+
+#4.10
+#1
+def p(num):
+    if num<2:
+        return False
+    if num==2:
+        return True
+    if num%2==0:
+        return False
+    for i in range(3,int(num**0.5)+1,2):
+        if num%i==0:
+            return False
+    return True
+
+def find_next_prime(n):
+    candidate=n+1
+    while True:
+        if p(candidate):
+            return candidate
+        candidate+=1
+
+n=int(input())
+next_prime=find_next_prime(n)
+print(f"大于n的最小的素数是{next_prime}")
+
+#2
+t=float(input())
+
+def e_approx(t):
+    e=1
+    term=1
+    n=1
+    while term>=t:
+        term/=n
+        e+=term
+        n+=1
+    return e
+
+print(f"{e_approx(t):.8f}")
+
+#3
+def p(num):
+    if num<2:
+        return False
+    if num==2:
+        return True
+    if num%2==0:
+        return False
+    for i in range(3,int(num**0.5)+1,2):
+        if num%i==0:
+            return False
+    return True
+
+N=int(input())
+count=0
+num=2
+total=0
+while count<N:
+    if p(num):
+        total+=num
+        count+=1
+    num+=1
+print(total)
+
+#4
+m,w=eval(input())
+if m<=3:
+    f=13
+elif m<=15:
+    f=13+(m-3)*2.3
+else:
+    f=13+(15-3)*2.3+(m-15)*2.3*1.5
+f+=w
+print(f"车费为 {f:.2f}")
