@@ -202,3 +202,76 @@ else:
     f=13+(15-3)*2.3+(m-15)*2.3*1.5
 f+=w
 print(f"车费为 {f:.2f}")
+
+#4.17
+#1
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+ 
+def print_palindrome_prime(n):
+    if str(n) == str(n)[::-1]:
+        if is_prime(n):
+            print("{}是回文素数".format(n))
+
+num = int(input("请输入一个数："))
+for i in range(num):
+    print_palindrome_prime(i)
+
+#2
+def find_self_power_numbers(n):
+    print(n, "位的自幂数有：",sep="")
+    start = 10**(n - 1)
+    end = 10**n
+    for num in range(start, end):
+        temp = num
+        total = 0
+        while temp > 0:
+            digit = temp % 10
+            total += digit ** n
+            temp //= 10
+        if total == num:
+            print(num)
+ 
+n_input = int(input())
+find_self_power_numbers(n_input)
+
+#3
+import math
+ 
+def sqrt_binary(n, error):
+    low = 0.0
+    high = n + 0.25
+    while True:
+        mid = (low + high) / 2
+        if abs(mid * mid - n) <= error:
+            return mid
+        if mid * mid < n:
+            low = mid
+        else:
+            high = mid
+ 
+input_data = input().split(',')
+n = float(input_data[0])
+error = float(input_data[1])
+ 
+result1 = sqrt_binary(n, error)
+result2 = math.sqrt(n)
+ 
+print("%.8f" % result1)
+print("%.8f" % result2)
+
+#4
+def solve_apples(n,c):
+  if n == 0:
+    print("苹果总数为",c,"个",end="")
+    return c
+  print("卖完第",n,"家，苹果剩余数为",c,"个",end="")
+  pl = c*2+1
+  return solve_apples(n-1,pl)
+
+solve_apples(5,8)
