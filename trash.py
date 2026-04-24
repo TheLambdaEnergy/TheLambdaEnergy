@@ -275,3 +275,63 @@ def solve_apples(n,c):
   return solve_apples(n-1,pl)
 
 solve_apples(5,8)
+
+#2026.4.24
+#1
+str1 = input().strip()
+ch = input().strip()
+str2 = ""
+for char in str1:
+    if char != ch:
+        str2 += char
+print(str2)
+
+#2
+a = input().strip()
+print("出生：{}年{}月{}日\n性别：{}".format(a[6:10],a[10:12],a[12:14],"男" if int(a[16]) % 2 == 1 else "女"))
+
+#3
+s = input().strip()
+p1 = int(s[0:8],2)
+p2 = int(s[8:16],2)
+p3 = int(s[16:24],2)
+p4 = int(s[24:32],2)
+
+print("{}.{}.{}.{}".format(p1,p2,p3,p4))
+
+#4
+a = input().strip('0')
+print(int(a[::-1]))
+
+#5
+def reverse_num(n):
+  return int(str(n)[::-1])
+
+def accumulate(n):
+  s = 0
+  while n > 0:
+    s += n%10
+    n = n//10
+  return s
+
+n = int(input())
+if n < 1 or n > 54:
+  print("无满足条件的数！")
+else:
+  res=[]
+  for i in range(10000,100000):
+    if i == reverse_num(i):
+      if accumulate(i) == n:
+        res.append(i)
+  if not res:
+    print("无满足条件的数！")
+  else:
+    for x in res:
+      print(x)
+    
+#6
+p = input()
+if p.lower() not in ["january","february","march","april","may","june","july","august","september","october","november","december"]:
+  print("拼写错误")
+else:
+  print(p[0].upper() + p[1:3].lower() + ".")
