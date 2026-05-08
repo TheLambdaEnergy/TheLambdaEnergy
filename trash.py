@@ -335,3 +335,83 @@ if p.lower() not in ["january","february","march","april","may","june","july","a
   print("拼写错误")
 else:
   print(p[0].upper() + p[1:3].lower() + ".")
+
+#2026.5.8
+#1
+print(sorted([int(a) for a in(input().split(' ')+input().split(' '))],reverse=True))
+
+#2
+def prime_factorization(n):
+    factors = []
+    divisor = 2
+    while n > 1:
+        while n % divisor == 0:
+            factors.append(divisor)
+            n = n // divisor
+        divisor += 1
+    return factors
+
+if __name__ == "__main__":
+    num = int(input())
+    print(prime_factorization(num))
+
+#3
+users = {"aaa": "123456", "bbb": "888888", "ccc": "333333"}
+username = input().strip()
+password = input().strip()
+if username not in users:
+    print("Wrong User")
+elif users[username] != password:
+    print("Fail")
+else:
+    print("Success")
+
+#4
+old = input().strip()
+weight = [7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2]
+check = ['1','0','X','9','8','7','6','5','4','3','2']
+
+year_prefix = '20' if '00' <= old[6:8] <= '04' else '19'
+new17 = old[:6] + year_prefix + old[6:]
+
+s = 0
+for i in range(17):
+    s += int(new17[i]) * weight[i]
+y = s % 11
+new18 = new17 + check[y]
+
+print(new18)
+
+#5
+lst_score = [9, 10, 8, 9, 10, 7, 6, 8, 7, 8]
+max_s = max(lst_score)
+min_s = min(lst_score)
+total = sum(lst_score) - max_s - min_s
+avg = total // 8
+print(f"去掉一个最高分：{max_s}，去掉一个最低分：{min_s}，该选手最终得分：{avg}")
+
+#6
+n = int(input())
+names = input().split(',')
+phones = input().split(',')
+MyDict = dict(zip(names, phones))
+for _ in range(n):
+    parts = input().split()
+    cmd = parts[0]
+    if cmd == 'add':
+        MyDict[parts[1]] = parts[2]
+    elif cmd == 'print':
+        print(MyDict)
+    elif cmd == 'del':
+        if parts[1] in MyDict:
+            del MyDict[parts[1]]
+        else:
+            print("键不存在")
+    elif cmd == 'update':
+        MyDict[parts[1]] = parts[2]
+    elif cmd == 'value':
+        print(list(MyDict.values()))
+    elif cmd == 'key':
+        print(list(MyDict.keys()))
+    elif cmd == 'clear':
+        MyDict.clear()
